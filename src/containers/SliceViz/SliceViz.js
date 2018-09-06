@@ -50,24 +50,27 @@ class SliceViz extends Component {
       this.setState({dragStartY:event.screenY});
       this.setState({dragStartX:event.screenX});
     }else{
-      let deltaX = (event.screenX - this.state.dragStartX)/1000;
-      let deltaY = (event.screenY - this.state.dragStartY)/1000;
+      let deltaX = (event.screenX - this.state.dragStartX)/100;
+      let deltaY = (event.screenY - this.state.dragStartY)/100;
       this.setWindow(127-deltaY, 256-deltaX);
     }
 
   }
 
-
+  resetImg(){
+    this.refs.image.src=this.props.slice;
+  }
   render(){
       return(
         <div>
-        <img
-        onDragOver={(e)=> this.onDrag(e)}
-        ref='image'
-        alt="CT"
-        src={this.props.slice}
-        width={350}
-        height={350} />
+          <img
+          onDragOver={(e)=>{this.onDrag(e)}}
+          onDragEnd={(e)=>{this.resetImg(e)}}
+          ref='image'
+          alt="CT"
+          src={this.props.slice}
+          width={350}
+          height={350} />
         </div>
       )
     }
