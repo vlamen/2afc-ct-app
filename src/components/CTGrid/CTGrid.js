@@ -15,10 +15,12 @@ class CTGrid extends Component {
             <div id="comp1" className="dtc pa2 ">
             <h1>Reference A</h1>
               <CTCard  />
+              <button className="f6 link dim ph3 pv2 mb2 dib white bg-dark-blue" href="">Choose A</button>
             </div>
             <div id="comp2" className="dtc pa2 ">
               <h1> Reference b:</h1>
               <CTCard  />
+              <button className="f6 link dim ph3 pv2 mb2 dib white bg-dark-blue" href="">Choose B</button>
             </div>
           </div>
         </div>

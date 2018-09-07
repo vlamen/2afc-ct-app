@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Jimp from 'jimp';
 
+
 class SliceViz extends Component {
   constructor(props){
     super(props);
@@ -31,6 +32,7 @@ class SliceViz extends Component {
       image.scan(0,0, image.bitmap.width, image.bitmap.height, (x, y, idx)=>{
         let val = (image.bitmap.data[idx+0] > max) ? max: image.bitmap.data[idx+0];
         val = (image.bitmap.data[idx+0]<min) ? min: image.bitmap.data[idx+0];
+        val = Math.floor(((val-min)/wl) * 255)
         image.bitmap.data[idx+0] = val;
         image.bitmap.data[idx+1] = val;
         image.bitmap.data[idx+2] = val;
@@ -49,8 +51,8 @@ class SliceViz extends Component {
       this.setState({dragStartY:event.screenY});
       this.setState({dragStartX:event.screenX});
     }else{
-      let deltaX = (event.screenX - this.state.dragStartX)/1;
-      let deltaY = (event.screenY - this.state.dragStartY)/1;
+      let deltaX = (event.screenX - this.state.dragStartX)/10;
+      let deltaY = (event.screenY - this.state.dragStartY)/10;
       this.setWindow(127-(deltaY), 256-(deltaX));
     }
 

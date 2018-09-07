@@ -53,9 +53,6 @@ class CTCard extends Component {
   onDragEnd(event){
     console.log(event.screenX);
   }
-  onDrag(event){
-    console.log(event.screenX);
-  }
 
   click(event){
     console.log("click");
